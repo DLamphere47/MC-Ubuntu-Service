@@ -1,0 +1,18 @@
+[Unit]
+Description=Modded Minecraft Server
+After=network.target
+
+[Service]
+RemainAfterExit=yes
+User=dan
+WorkingDirectory=/home/dan/minecraftATM
+ExecStart=screen -S minecraftATM -d -m /home/dan/minecraftATM/startserver.sh
+#
+ExecStop=screen -S minecraftATM -X eval 'stuff "say Saving and stopping server in 10 seconds"\015'
+ExecStop=sleep 10
+ExecStop=screen -S minecraftATM -X eval 'stuff "save-all"\015'
+ExecStop=screen -S minecraftATM -X eval 'stuff "stop"\015'
+ExecStop=sleep 20
+
+[Install]
+WantedBy=default.target
