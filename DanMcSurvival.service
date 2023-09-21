@@ -1,0 +1,15 @@
+[Unit]
+Description=DanMcSurvival Minecraft Bedrock Server
+After=network-online.target
+
+[Service]
+User=dan
+WorkingDirectory=/home/dan/minecraftbe/DanMcSurvival
+Type=forking
+ExecStart=/bin/bash /home/dan/minecraftbe/DanMcSurvival/start.sh
+ExecStop=/bin/bash /home/dan/minecraftbe/DanMcSurvival/stop.sh
+GuessMainPID=no
+TimeoutStartSec=1800
+
+[Install]
+WantedBy=multi-user.target
